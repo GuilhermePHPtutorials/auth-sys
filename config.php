@@ -8,4 +8,4 @@ $conn = new PDO("mysql:host=$host; dbname=$dbname;", $user, $password);
 //     echo "it's fine";
 // } else {
 //     echo "connection is wrong";
-// }
+// } //eita
