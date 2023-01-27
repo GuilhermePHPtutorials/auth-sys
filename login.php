@@ -1,6 +1,11 @@
 <?php require "includes/header.php"; ?>
 <?php require "config.php"; ?>
 <?php
+
+if (isset($_SESSION['username'])) {
+  header("location: index.php");
+}
+
 if (isset($_POST['submit'])) {
   if ($_POST['email'] == '' or $_POST['password'] == '') {
     echo "some inputs are empty";
@@ -13,6 +18,9 @@ if (isset($_POST['submit'])) {
     if ($login->rowCount() > 0) {
       if (password_verify($pass, $data['pass'])) {
         echo "logged in";
+        $_SESSION['username'] = $data['username'];
+        $_SESSION['email'] = $data['email'];
+        header("location: index.php");
       } else {
         echo "password wrong";
       }
